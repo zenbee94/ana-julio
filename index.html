@@ -1163,7 +1163,7 @@
                 }
             });
 
-            form.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
                 e.preventDefault();
                 hideAlert();
 
@@ -1192,6 +1192,9 @@
                     return;
                 }
 
+                // 1. Declarar la fecha y hora primero
+                const timestamp = new Date().toLocaleString("es-MX");
+
                 const newEntry = {
                     id: Date.now(),
                     name,
@@ -1199,35 +1202,42 @@
                     companionsCount,
                     companionNames,
                     notes,
-                    timestamp: new Date().toLocaleString("es-MX")
+                    timestamp
                 };
 
-             // 1. Guardar localmente
+                // 2. Guardar localmente
                 existing.push(newEntry);
                 saveRSVPs(existing);
 
-            // 2. Enviar los datos en segundo plano hacia Google Sheets
-                // (Creamos un objeto FormData empaquetando los nombres de columna de tu Google Sheet)
-                const formData = new FormData();
-                formData.append("Fecha", timestamp);
-                formData.append("Nombre", name);
-                formData.append("Asistencia", status);
-                formData.append("Numero de Pases", companionsCount);
-                formData.append("Mensaje", `Acompañantes: ${companionNames} | Notas: ${notes}`);
+                // 3. Enviar los datos en segundo plano hacia Google Sheets de forma segura
+                const urlParams = new URLSearchParams();
+                urlParams.append("Fecha", timestamp);
+                urlParams.append("Nombre", name);
+                urlParams.append("Asistencia", status);
+                urlParams.append("Numero de Pases", companionsCount);
+                urlParams.append("Mensaje", `Acompañantes: ${companionNames} | Notas: ${notes}`);
 
                 if (scriptURL !== "PEGAR_AQUI_TU_URL_DE_APPS_SCRIPT") {
-                    fetch(scriptURL, { method: "POST", body: formData })
-                        .catch(error => console.error("Error al sincronizar con Sheets:", error));
+                    fetch(scriptURL, {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: urlParams.toString()
+                    })
+                    .then(() => console.log("Enviado a Google Sheets"))
+                    .catch(error => console.error("Error al sincronizar con Sheets:", error));
                 }
 
-            // 3. Mostrar pantalla de éxito
+                // 4. Mostrar pantalla de éxito
                 form.classList.add("hidden");
                 successView.classList.remove("hidden");
                 summaryText.innerHTML = `
                     <strong>${name}</strong><br>
                     Estado: <strong>${status}</strong><br>
                     ${companionsCount > 0 ? `Acompañantes (${companionsCount}): ${companionNames}<br>` : ""}
-                    <span class="text-[10px] opacity-75">Registrado el ${newEntry.timestamp}</span>
+                    <span class="text-[10px] opacity-75">Registrado el ${timestamp}</span>
                 `;
                 form.reset();
                 companionNamesWrapper.classList.add("hidden");
