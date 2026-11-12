@@ -585,7 +585,7 @@
                 <!-- Action Button: VER ÁLBUM -->
                 <div>
                     <a id="cfg-album-btn"
-                       href="https://photos.google.com"
+                       href="https://weddingqr.app/e/gallery-abnm1"
                        target="_blank"
                        rel="noopener noreferrer"
                        class="inline-block bg-cream text-olive-dark hover:bg-white active:scale-95 transition-all px-8 py-2.5 rounded-full text-[9.5px] font-bold tracking-[0.22em] uppercase shadow-md">
@@ -1073,9 +1073,12 @@
             }
         }
 
-        // 6. Sistema Completo de Confirmación RSVP (Modal + Validación + Persistencia + Panel Novios)
+// 6. Sistema Completo de Confirmación RSVP (Modal + Validación + Google Sheets + LocalStorage)
         function initRSVPSystem() {
             const STORAGE_KEY = "boda_ana_julio_rsvps_v1";
+            
+            // https://script.google.com/macros/s/AKfycbxkbbua5hfOdsi8mJL9p0J6_mmGjBZZrVBiYHPs1pvQ2r_jZZmatvnci-kk6C0nqZpMKA/exec (la que termina en /exec)
+            const scriptURL = "PEGAR_AQUI_TU_URL_DE_APPS_SCRIPT";
 
             const modal = document.getElementById("rsvp-modal");
             const openBtn = document.getElementById("open-rsvp-modal");
@@ -1167,8 +1170,8 @@
                 const name = document.getElementById("rsvp-name").value.trim();
                 const status = document.querySelector('input[name="rsvp-status"]:checked').value;
                 const companionsCount = status === "Sí asistiré" ? parseInt(guestsSelect.value, 10) : 0;
-                const companionNames = companionsCount > 0 ? companionNamesInput.value.trim() : "";
-                const notes = document.getElementById("rsvp-notes").value.trim();
+                const companionNames = companionsCount > 0 ? companionNamesInput.value.trim() : "Ninguno";
+                const notes = document.getElementById("rsvp-notes").value.trim() || "Ninguna";
 
                 if (name.length < 3) {
                     showAlert("Por favor ingresa tu nombre completo.");
@@ -1189,6 +1192,8 @@
                     return;
                 }
 
+                const timestamp = new Date().toLocaleString("es-MX");
+
                 const newEntry = {
                     id: Date.now(),
                     name,
@@ -1196,23 +1201,40 @@
                     companionsCount,
                     companionNames,
                     notes,
-                    timestamp: new Date().toLocaleString("es-MX")
+                    timestamp
                 };
 
+                // 1. Guardar localmente (como ya lo hacía tu código)
                 existing.push(newEntry);
                 saveRSVPs(existing);
 
+                // 2. Enviar los datos en segundo plano hacia Google Sheets
+                // (Creamos un objeto FormData empaquetando los nombres de columna de tu Google Sheet)
+                const formData = new FormData();
+                formData.append("Fecha", timestamp);
+                formData.append("Nombre", name);
+                formData.append("Asistencia", status);
+                formData.append("Numero de Pases", companionsCount);
+                formData.append("Mensaje", `Acompañantes: ${companionNames} | Notas: ${notes}`);
+
+                if (scriptURL !== "PEGAR_AQUI_TU_URL_DE_APPS_SCRIPT") {
+                    fetch(scriptURL, { method: "POST", body: formData })
+                        .catch(error => console.error("Error al sincronizar con Sheets:", error));
+                }
+
+                // 3. Mostrar pantalla de éxito
                 form.classList.add("hidden");
                 successView.classList.remove("hidden");
                 summaryText.innerHTML = `
                     <strong>${name}</strong><br>
                     Estado: <strong>${status}</strong><br>
                     ${companionsCount > 0 ? `Acompañantes (${companionsCount}): ${companionNames}<br>` : ""}
-                    <span class="text-[10px] opacity-75">Registrado el ${newEntry.timestamp}</span>
+                    <span class="text-[10px] opacity-75">Registrado el ${timestamp}</span>
                 `;
                 form.reset();
                 companionNamesWrapper.classList.add("hidden");
             });
+        }
 
             // Panel Administrativo para los Novios
             const adminModal = document.getElementById("admin-modal");
