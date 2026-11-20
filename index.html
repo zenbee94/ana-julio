@@ -235,29 +235,12 @@
                 <path d="M62 -15 C 102 33, 145 62, 205 84" stroke="currentColor" stroke-width="0.9" stroke-dasharray="3 2" />
             </svg>
 
-            <div class="reveal-item is-visible relative w-28 h-28 mx-auto mb-5 flex items-center justify-center">
-                <svg class="w-full h-full text-cream" viewBox="0 0 130 130" fill="none">
-                    <circle cx="65" cy="62" r="52" stroke="currentColor" stroke-width="1.1" stroke-opacity="0.85" />
-                    <circle cx="65" cy="62" r="48.5" stroke="currentColor" stroke-width="0.6" stroke-opacity="0.55" />
-                    <path d="M26 92 C 38 108, 52 114, 65 115" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" />
-                    <path d="M35 100 C 26 97, 23 90, 28 86 C 33 89, 36 94, 35 100 Z" fill="currentColor" fill-opacity="0.75" />
-                    <path d="M46 108 C 38 112, 31 109, 33 103 C 39 102, 44 104, 46 108 Z" fill="currentColor" fill-opacity="0.75" />
-                    <path d="M56 113 C 50 119, 43 118, 44 112 C 49 110, 53 111, 56 113 Z" fill="currentColor" fill-opacity="0.75" />
-                    <path d="M104 92 C 92 108, 78 114, 65 115" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" />
-                    <path d="M95 100 C 104 97, 107 90, 102 86 C 97 89, 94 94, 95 100 Z" fill="currentColor" fill-opacity="0.75" />
-                    <path d="M84 108 C 92 112, 99 109, 97 103 C 91 102, 86 104, 84 108 Z" fill="currentColor" fill-opacity="0.75" />
-                    <circle cx="71" cy="112" r="2.2" fill="currentColor" />
-                    <circle cx="67.5" cy="110" r="1.6" fill="currentColor" fill-opacity="0.7" />
-                    <circle cx="74.5" cy="110" r="1.6" fill="currentColor" fill-opacity="0.7" />
-                    <circle cx="68.5" cy="114.5" r="1.6" fill="currentColor" fill-opacity="0.7" />
-                    <circle cx="73.5" cy="114.5" r="1.6" fill="currentColor" fill-opacity="0.7" />
-                </svg>
-
-                <div class="absolute inset-0 flex items-center justify-center pb-1.5 font-editorial text-cream tracking-wider">
-                    <span id="cfg-initial-1" class="text-[28px] font-semibold">A</span>
-                    <span class="font-calligraphy text-[22px] mx-1 text-cream/90">&</span>
-                    <span id="cfg-initial-2" class="text-[28px] font-semibold">J</span>
-                </div>
+            <!-- Logo Monograma SVG Oficial (ayj.svg) -->
+            <div class="reveal-item is-visible w-32 h-32 mx-auto mb-5 flex items-center justify-center">
+                <img id="cfg-monogram-logo"
+                     src="./ayj.svg"
+                     alt="Monograma Ana & Julio"
+                     class="w-full h-full object-contain drop-shadow-sm" />
             </div>
 
             <p class="reveal-item is-visible text-[10px] tracking-[0.34em] uppercase text-cream/90 font-medium mb-1">
@@ -317,20 +300,17 @@
              SECCIÓN 2 & 3: FOTOGRAFÍA EXTENDIDA ENTRE CURVAS + REPRODUCTOR SUPERPUESTO
              ================================================================= -->
         <section class="photo-player-stage select-none">
-            <!-- Fotografía de fondo: abarca desde la curva superior hasta la curva inferior -->
             <img id="cfg-couple-photo"
                  src="./novios.jpg"
                  alt="Fotografía de Ana y Julio"
                  class="couple-bg-photo"
                  onerror="this.src='https://placehold.co/600x800/7C7F58/F4E8B8?text=Ana+%26+Julio'" />
 
-            <!-- Curva decorativa superior (#7C7F58 + trazo crema) -->
             <svg class="absolute -top-[1px] left-0 w-full h-[115px] pointer-events-none z-10" viewBox="0 0 460 115" preserveAspectRatio="none">
                 <path d="M0,0 L460,0 L460,4 C420,44 335,54 225,62 C115,70 48,84 0,110 Z" fill="#7C7F58" />
                 <path d="M0,111.5 C48,85.5 115,71.5 225,63.5 C335,55.5 420,45.5 460,5.5" fill="none" stroke="#F4E8B8" stroke-width="2.5" stroke-linecap="round" />
             </svg>
 
-            <!-- Reproductor Musical flotando sobre la fotografía -->
             <div class="relative z-20 px-6 pt-[285px] sm:pt-[315px] pb-[155px] sm:pb-[165px] flex justify-center">
                 <div class="reveal-item is-visible w-full max-w-[300px] bg-[#555843]/95 backdrop-blur-xs rounded-[24px] px-6 py-5 shadow-[0_20px_42px_rgba(32,35,23,0.48)] border-[1.5px] border-cream/75 text-center text-cream">
                     <h2 id="cfg-song-title" class="font-calligraphy text-[32px] leading-tight text-white tracking-wide truncate">
@@ -386,7 +366,6 @@
                 </div>
             </div>
 
-            <!-- Curva decorativa inferior (#949474 + trazo crema) -->
             <svg class="absolute -bottom-[1px] left-0 w-full h-[145px] pointer-events-none z-10" viewBox="0 0 460 145" preserveAspectRatio="none">
                 <path d="M0,126 C48,100 115,86 225,78 C335,70 420,60 460,20" fill="none" stroke="#F4E8B8" stroke-width="2.5" stroke-linecap="round" />
                 <path d="M0,145 L460,145 L460,22 C420,62 335,72 225,80 C115,88 48,102 0,128 Z" fill="#949474" />
@@ -545,20 +524,17 @@
              SECCIÓN 7.5: SEGUNDA FOTOGRAFÍA DE LOS NOVIOS ENTRE CURVAS
              ================================================================= -->
         <section class="secondary-photo-stage select-none">
-            <!-- Segunda fotografía de fondo (editable desde INVITATION_CONFIG.secondaryPhotoUrl) -->
             <img id="cfg-secondary-photo"
                  src="./novios2.jpg"
                  alt="Segunda fotografía de Ana y Julio"
                  class="couple-secondary-photo"
                  onerror="this.src='https://placehold.co/600x800/7C7F58/F4E8B8?text=Ana+%26+Julio+2'" />
 
-            <!-- Curva decorativa superior (#FFFFFF -> Foto + trazo crema) -->
             <svg class="absolute -top-[1px] left-0 w-full h-[115px] pointer-events-none z-10" viewBox="0 0 460 115" preserveAspectRatio="none">
                 <path d="M0,0 L460,0 L460,4 C420,44 335,54 225,62 C115,70 48,84 0,110 Z" fill="#FFFFFF" />
                 <path d="M0,111.5 C48,85.5 115,71.5 225,63.5 C335,55.5 420,45.5 460,5.5" fill="none" stroke="#F4E8B8" stroke-width="2.5" stroke-linecap="round" />
             </svg>
 
-            <!-- Curva decorativa inferior (Foto -> Verde Militar Oscuro #5B5E49 + trazo crema) -->
             <svg class="absolute -bottom-[1px] left-0 w-full h-[135px] pointer-events-none z-10" viewBox="0 0 460 135" preserveAspectRatio="none">
                 <path d="M0,116 C48,90 115,76 225,68 C335,60 420,50 460,10" fill="none" stroke="#F4E8B8" stroke-width="2.5" stroke-linecap="round" />
                 <path d="M0,135 L460,135 L460,12 C420,52 335,62 225,70 C115,78 48,92 0,118 Z" fill="#5B5E49" />
@@ -741,8 +717,7 @@
         const INVITATION_CONFIG = {
             partner1Name: "Ana",
             partner2Name: "Julio",
-            partner1Initial: "A",
-            partner2Initial: "J",
+            monogramLogoUrl: "./ayj.svg",
             dateDisplayPill: "19 · DICIEMBRE · 2026",
             eventDateISO: "2026-12-19T16:00:00",
             couplePhotoUrl: "./novios.jpg",
@@ -799,8 +774,12 @@
 
         function populateStaticContent() {
             document.title = `Nuestra Boda — ${INVITATION_CONFIG.partner1Name} & ${INVITATION_CONFIG.partner2Name}`;
-            document.getElementById("cfg-initial-1").textContent = INVITATION_CONFIG.partner1Initial;
-            document.getElementById("cfg-initial-2").textContent = INVITATION_CONFIG.partner2Initial;
+            const monogramEl = document.getElementById("cfg-monogram-logo");
+            if (monogramEl && INVITATION_CONFIG.monogramLogoUrl) {
+                monogramEl.src = INVITATION_CONFIG.monogramLogoUrl;
+                monogramEl.alt = `Monograma ${INVITATION_CONFIG.partner1Name} & ${INVITATION_CONFIG.partner2Name}`;
+            }
+
             document.getElementById("cfg-name-1").textContent = INVITATION_CONFIG.partner1Name;
             document.getElementById("cfg-name-2").textContent = INVITATION_CONFIG.partner2Name;
             document.getElementById("cfg-date-pill").textContent = INVITATION_CONFIG.dateDisplayPill;
