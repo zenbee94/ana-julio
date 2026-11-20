@@ -37,7 +37,7 @@
         }
     </script>
 
-    <!-- Google Fonts: Alex Brush / Great Vibes (Calligraphy), Cormorant Garamond (Editorial Serif), Montserrat (Clean Caps) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -46,7 +46,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
-        /* Base Exterior Styling for Desktop Editorial Framing */
         body {
             background-color: #F3EFE6;
             background-image: 
@@ -59,7 +58,6 @@
             padding: 0;
         }
 
-        /* Editorial Container */
         .editorial-card {
             width: 100%;
             max-width: 460px;
@@ -80,12 +78,42 @@
             }
         }
 
-        /* Typography Utilities */
         .font-calligraphy {
             font-family: 'Alex Brush', 'Great Vibes', cursive;
         }
         .font-editorial {
             font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Zona unificada de fotografía + ondas + reproductor */
+        .photo-player-stage {
+            position: relative;
+            width: 100%;
+            min-height: 670px;
+            background-color: #949474;
+            overflow: hidden;
+        }
+
+        @media (min-width: 640px) {
+            .photo-player-stage {
+                min-height: 720px;
+            }
+        }
+
+        .photo-player-stage img.couple-bg-photo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 22%;
+            z-index: 0;
+            display: block;
+            transition: transform 1s ease;
+        }
+
+        .photo-player-stage:hover img.couple-bg-photo {
+            transform: scale(1.02);
         }
 
         /* Custom Range Slider for Audio Player */
@@ -96,17 +124,17 @@
             cursor: pointer;
         }
         input[type="range"].music-slider::-webkit-slider-runnable-track {
-            height: 2px;
+            height: 2.5px;
             border-radius: 999px;
         }
         input[type="range"].music-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            height: 11px;
-            width: 11px;
+            height: 12px;
+            width: 12px;
             border-radius: 50%;
             background: #F4E8B8;
-            margin-top: -4.5px;
+            margin-top: -4.75px;
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
             transition: transform 0.15s ease;
         }
@@ -125,7 +153,6 @@
             transform: translateY(0);
         }
 
-        /* Gentle Heartbeat */
         @keyframes gentleBeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.16); }
@@ -135,7 +162,6 @@
             animation: gentleBeat 2.6s infinite ease-in-out;
         }
 
-        /* Custom Scrollbar for Modals */
         .custom-scroll::-webkit-scrollbar {
             width: 5px;
         }
@@ -167,40 +193,28 @@
         </svg>
     </div>
 
-    <!-- =====================================================================
-         MAIN VERTICAL EDITORIAL INVITATION CONTAINER
-         ===================================================================== -->
     <main class="editorial-card">
 
         <!-- =================================================================
              SECCIÓN 1: PORTADA / HERO (Fondo Verde Olivo #7C7F58)
              ================================================================= -->
-        <header class="relative bg-olive-hero text-cream pt-12 pb-16 px-6 text-center select-none overflow-hidden">
-            
-            <!-- Top-Right Parallel Curved Diagonal Lines (Exact Reference Detail) -->
+        <header class="relative bg-olive-hero text-cream pt-12 pb-6 px-6 text-center select-none overflow-hidden">
             <svg class="absolute top-0 right-0 w-44 h-36 pointer-events-none text-cream/65" viewBox="0 0 180 150" fill="none">
                 <path d="M45 -10 C 85 38, 130 68, 195 92" stroke="currentColor" stroke-width="1.15" />
                 <path d="M62 -15 C 102 33, 145 62, 205 84" stroke="currentColor" stroke-width="0.9" stroke-dasharray="3 2" />
             </svg>
 
-            <!-- Monogram Circle with Botanical Olive Branches at Base -->
             <div class="reveal-item is-visible relative w-28 h-28 mx-auto mb-5 flex items-center justify-center">
                 <svg class="w-full h-full text-cream" viewBox="0 0 130 130" fill="none">
-                    <!-- Outer & Inner Delicate Rings -->
                     <circle cx="65" cy="62" r="52" stroke="currentColor" stroke-width="1.1" stroke-opacity="0.85" />
                     <circle cx="65" cy="62" r="48.5" stroke="currentColor" stroke-width="0.6" stroke-opacity="0.55" />
-                    
-                    <!-- Left Botanical Branch along bottom curve -->
                     <path d="M26 92 C 38 108, 52 114, 65 115" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" />
                     <path d="M35 100 C 26 97, 23 90, 28 86 C 33 89, 36 94, 35 100 Z" fill="currentColor" fill-opacity="0.75" />
                     <path d="M46 108 C 38 112, 31 109, 33 103 C 39 102, 44 104, 46 108 Z" fill="currentColor" fill-opacity="0.75" />
                     <path d="M56 113 C 50 119, 43 118, 44 112 C 49 110, 53 111, 56 113 Z" fill="currentColor" fill-opacity="0.75" />
-
-                    <!-- Right Botanical Branch & Delicate Flower -->
                     <path d="M104 92 C 92 108, 78 114, 65 115" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" />
                     <path d="M95 100 C 104 97, 107 90, 102 86 C 97 89, 94 94, 95 100 Z" fill="currentColor" fill-opacity="0.75" />
                     <path d="M84 108 C 92 112, 99 109, 97 103 C 91 102, 86 104, 84 108 Z" fill="currentColor" fill-opacity="0.75" />
-                    <!-- Small Blossom Accent -->
                     <circle cx="71" cy="112" r="2.2" fill="currentColor" />
                     <circle cx="67.5" cy="110" r="1.6" fill="currentColor" fill-opacity="0.7" />
                     <circle cx="74.5" cy="110" r="1.6" fill="currentColor" fill-opacity="0.7" />
@@ -208,27 +222,23 @@
                     <circle cx="73.5" cy="114.5" r="1.6" fill="currentColor" fill-opacity="0.7" />
                 </svg>
 
-                <!-- Monogram Letters -->
                 <div class="absolute inset-0 flex items-center justify-center pb-1.5 font-editorial text-cream tracking-wider">
                     <span id="cfg-initial-1" class="text-[28px] font-semibold">A</span>
-                    <span class="font-calligraphy text-[22px] mx-1 text-cream/90">&amp;</span>
+                    <span class="font-calligraphy text-[22px] mx-1 text-cream/90">&</span>
                     <span id="cfg-initial-2" class="text-[28px] font-semibold">J</span>
                 </div>
             </div>
 
-            <!-- Small Subtitle: NUESTRA BODA -->
             <p class="reveal-item is-visible text-[10px] tracking-[0.34em] uppercase text-cream/90 font-medium mb-1">
                 NUESTRA BODA
             </p>
 
-            <!-- Couple Calligraphy Names -->
             <h1 class="reveal-item is-visible font-calligraphy text-[58px] leading-[1.08] text-white drop-shadow-sm my-1 flex items-center justify-center flex-wrap gap-x-2.5">
                 <span id="cfg-name-1">Ana</span>
-                <span class="text-[38px] text-cream/90 font-normal translate-y-0.5">&amp;</span>
+                <span class="text-[38px] text-cream/90 font-normal translate-y-0.5">&</span>
                 <span id="cfg-name-2">Julio</span>
             </h1>
 
-            <!-- Date Capsule Pill with Side Delicate Lines -->
             <div class="reveal-item is-visible flex items-center justify-center gap-3 mt-2 mb-6">
                 <span class="w-7 h-[1px] bg-cream/45"></span>
                 <div class="bg-cream text-olive-dark px-5 py-1.5 rounded-full text-[10px] font-semibold tracking-[0.22em] uppercase shadow-sm">
@@ -237,12 +247,10 @@
                 <span class="w-7 h-[1px] bg-cream/45"></span>
             </div>
 
-            <!-- Countdown Header -->
             <p class="reveal-item is-visible text-[9px] tracking-[0.32em] uppercase text-cream/85 font-medium mb-2.5">
                 FALTAN:
             </p>
 
-            <!-- 4-Column Clean Serif Countdown -->
             <div id="countdown-grid" class="reveal-item is-visible grid grid-cols-4 max-w-[310px] mx-auto gap-2 text-center">
                 <div>
                     <div id="cd-days" class="font-editorial text-[34px] leading-none font-normal text-white">00</div>
@@ -262,124 +270,104 @@
                 </div>
             </div>
 
-            <!-- Special Message when Event Date Arrives -->
             <div id="countdown-celebration" class="hidden py-3 px-4 rounded-2xl bg-cream/15 border border-cream/30 max-w-xs mx-auto">
                 <p class="font-calligraphy text-3xl text-white">¡Llegó el gran día!</p>
                 <p class="text-[10px] tracking-[0.2em] uppercase text-cream mt-1">Hoy celebramos nuestro amor</p>
             </div>
 
-            <!-- Centered Cream Heart with Side Lines -->
-            <div class="mt-5 flex items-center justify-center gap-3 text-cream text-xs">
+            <div class="mt-4 flex items-center justify-center gap-3 text-cream text-xs relative z-20">
                 <span class="w-8 h-[1px] bg-cream/45"></span>
                 <span class="heart-beat">♥</span>
                 <span class="w-8 h-[1px] bg-cream/45"></span>
             </div>
         </header>
 
-     
         <!-- =================================================================
-             SECCIÓN 2: FOTOGRAFÍA DE LOS NOVIOS CON CURVAS ORGÁNICAS PARALELAS
+             SECCIÓN 2 & 3: FOTOGRAFÍA EXTENDIDA ENTRE CURVAS + REPRODUCTOR SUPERPUESTO
              ================================================================= -->
-        <section class="relative w-full bg-olive-sage select-none">
-            <!-- Contenedor Principal con altura extendida para cubrir toda el área -->
-            <div class="relative w-full h-[620px] sm:h-[660px] overflow-hidden">
-                <!-- Fotografía de los Novios abarcando el 100% absoluto -->
-                <img id="cfg-couple-photo"
-                     src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=85"
-                     alt="Fotografía de Ana y Julio"
-                     class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-1000 hover:scale-[1.02]"
-                     onerror="this.src='https://placehold.co/600x800/7C7F58/F4E8B8?text=Ana+%26+Julio'" />
+        <section class="photo-player-stage select-none">
+            <!-- Fotografía de fondo: abarca desde la curva superior hasta la curva inferior -->
+            <img id="cfg-couple-photo"
+                 src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=85"
+                 alt="Fotografía de Ana y Julio"
+                 class="couple-bg-photo"
+                 onerror="this.src='https://placehold.co/600x800/7C7F58/F4E8B8?text=Ana+%26+Julio'" />
 
-                <!-- Onda Superior Asimétrica Fluida (Hero #7C7F58 -> Foto) con Trazo Fino Crema -->
-                <svg class="absolute -top-[1px] left-0 w-full h-[145px] pointer-events-none z-10" viewBox="0 0 460 145" preserveAspectRatio="none">
-                    <!-- Relleno Verde Olivo del Hero que cae pronunciadamente hacia la izquierda -->
-                    <path d="M0,0 L460,0 L460,8 C415,58 320,66 210,76 C105,86 42,102 0,136 Z" fill="#7C7F58" />
-                    <!-- Trazo Fino Color Crema bordeando toda la curva superior -->
-                    <path d="M0,137.5 C42,103.5 105,87.5 210,77.5 C320,67.5 415,59.5 460,9.5" fill="none" stroke="#F4E8B8" stroke-width="2.6" stroke-linecap="round" />
-                </svg>
+            <!-- Curva decorativa superior (#7C7F58 + trazo crema) -->
+            <svg class="absolute -top-[1px] left-0 w-full h-[115px] pointer-events-none z-10" viewBox="0 0 460 115" preserveAspectRatio="none">
+                <path d="M0,0 L460,0 L460,4 C420,44 335,54 225,62 C115,70 48,84 0,110 Z" fill="#7C7F58" />
+                <path d="M0,111.5 C48,85.5 115,71.5 225,63.5 C335,55.5 420,45.5 460,5.5" fill="none" stroke="#F4E8B8" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
 
-                <!-- Onda Inferior Paralela (Foto -> Verde Salvia #949474) cruzando detrás del Reproductor -->
-                <svg class="absolute -bottom-[1px] left-0 w-full h-[175px] pointer-events-none z-10" viewBox="0 0 460 175" preserveAspectRatio="none">
-                    <!-- Trazo Continuo Color Crema paralelo a la curva superior -->
-                    <path d="M0,152 C42,118 105,102 210,92 C320,82 415,74 460,24" fill="none" stroke="#F4E8B8" stroke-width="2.6" stroke-linecap="round" />
-                    <!-- Relleno Verde Salvia Inferior (#949474) -->
-                    <path d="M0,175 L460,175 L460,26 C415,76 320,84 210,94 C105,104 42,120 0,154 Z" fill="#949474" />
-                </svg>
+            <!-- Reproductor Musical flotando sobre la fotografía -->
+            <div class="relative z-20 px-6 pt-[285px] sm:pt-[315px] pb-[155px] sm:pb-[165px] flex justify-center">
+                <div class="reveal-item is-visible w-full max-w-[300px] bg-[#555843]/95 backdrop-blur-xs rounded-[24px] px-6 py-5 shadow-[0_20px_42px_rgba(32,35,23,0.48)] border-[1.5px] border-cream/75 text-center text-cream">
+                    <h2 id="cfg-song-title" class="font-calligraphy text-[32px] leading-tight text-white tracking-wide truncate">
+                        Until I Found You
+                    </h2>
+                    <p id="cfg-song-artist" class="text-[8.5px] tracking-[0.26em] uppercase text-cream/85 font-medium mt-0.5 mb-3.5">
+                        STEPHEN SANCHEZ
+                    </p>
+
+                    <div class="w-full">
+                        <input id="music-progress"
+                               type="range"
+                               min="0"
+                               max="100"
+                               value="0"
+                               step="0.1"
+                               aria-label="Progreso de la canción"
+                               class="music-slider w-full block"
+                               style="background: linear-gradient(to right, #F4E8B8 0%, rgba(244,232,184,0.32) 0%);" />
+                        <div class="flex justify-between text-[8.5px] text-cream/80 font-medium tracking-wider mt-1.5">
+                            <span id="music-current-time">0:00</span>
+                            <span id="music-duration">2:56</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-7 mt-2">
+                        <button id="music-prev-btn" type="button" aria-label="Reiniciar o anterior canción"
+                                class="text-cream hover:text-white active:scale-90 transition p-2">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M18 5v14l-11-7z" />
+                            </svg>
+                        </button>
+
+                        <button id="music-play-btn" type="button" aria-label="Reproducir o pausar música"
+                                class="w-12 h-12 rounded-full bg-cream text-[#555843] flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition">
+                            <svg id="icon-play" class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                            <svg id="icon-pause" class="w-5 h-5 fill-current hidden" viewBox="0 0 24 24">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                            </svg>
+                        </button>
+
+                        <button id="music-next-btn" type="button" aria-label="Siguiente canción"
+                                class="text-cream hover:text-white active:scale-90 transition p-2">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M6 19l11-7-11-7v14z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <audio id="bg-audio" preload="metadata"></audio>
+                </div>
             </div>
+
+            <!-- Curva decorativa inferior (#949474 + trazo crema) -->
+            <svg class="absolute -bottom-[1px] left-0 w-full h-[145px] pointer-events-none z-10" viewBox="0 0 460 145" preserveAspectRatio="none">
+                <path d="M0,126 C48,100 115,86 225,78 C335,70 420,60 460,20" fill="none" stroke="#F4E8B8" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M0,145 L460,145 L460,22 C420,62 335,72 225,80 C115,88 48,102 0,128 Z" fill="#949474" />
+            </svg>
         </section>
 
         <!-- =================================================================
-             SECCIÓN 3 & 4: REPRODUCTOR MUSICAL CENTRADO EN LA CURVA + MENSAJE
+             SECCIÓN 4 & 5: MENSAJE DE INVITACIÓN + CEREMONIA Y RECEPCIÓN
              ================================================================= -->
         <section class="relative bg-olive-sage px-6 pb-8 text-center text-cream">
 
-            <!-- Caja del Reproductor Musical: Mitad sobre la foto, mitad sobre el fondo verde salvia -->
-            <div class="reveal-item relative z-20 -mt-[198px] sm:-mt-[204px] mx-auto w-full max-w-[304px] bg-[#555843] rounded-[24px] px-6 py-5 shadow-[0_18px_38px_rgba(38,41,28,0.42)] border border-[#F4E8B8]/45">
-                <!-- Song Title in Calligraphy -->
-                <h2 id="cfg-song-title" class="font-calligraphy text-[31px] leading-tight text-white tracking-wide truncate">
-                    Until I Found You
-                </h2>
-                <!-- Artist Name in Small Uppercase -->
-                <p id="cfg-song-artist" class="text-[8.5px] tracking-[0.26em] uppercase text-cream/80 font-medium mt-0.5 mb-3.5">
-                    STEPHEN SANCHEZ
-                </p>
-
-                <!-- Interactive Progress Bar + Timestamps -->
-                <div class="w-full">
-                    <input id="music-progress"
-                           type="range"
-                           min="0"
-                           max="100"
-                           value="0"
-                           step="0.1"
-                           aria-label="Progreso de la canción"
-                           class="music-slider w-full block"
-                           style="background: linear-gradient(to right, #F4E8B8 0%, rgba(244,232,184,0.28) 0%);" />
-                    <div class="flex justify-between text-[8.5px] text-cream/75 font-medium tracking-wider mt-1.5">
-                        <span id="music-current-time">0:00</span>
-                        <span id="music-duration">2:56</span>
-                    </div>
-                </div>
-
-                <!-- Playback Controls -->
-                <div class="flex items-center justify-center gap-7 mt-2">
-                    <!-- Previous / Restart Track -->
-                    <button id="music-prev-btn" type="button" aria-label="Reiniciar o anterior canción"
-                            class="text-cream hover:text-white active:scale-90 transition p-2">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                            <path d="M18 5v14l-11-7z" />
-                        </svg>
-                    </button>
-
-                    <!-- Main Cream Circle Play/Pause Button -->
-                    <button id="music-play-btn" type="button" aria-label="Reproducir o pausar música"
-                            class="w-12 h-12 rounded-full bg-cream text-[#555843] flex items-center justify-center shadow-md hover:scale-105 active:scale-95 transition">
-                        <!-- Play Icon -->
-                        <svg id="icon-play" class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                        </svg>
-                        <!-- Pause Icon (Hidden by default) -->
-                        <svg id="icon-pause" class="w-5 h-5 fill-current hidden" viewBox="0 0 24 24">
-                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-                        </svg>
-                    </button>
-
-                    <!-- Next Track -->
-                    <button id="music-next-btn" type="button" aria-label="Siguiente canción"
-                            class="text-cream hover:text-white active:scale-90 transition p-2">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                            <path d="M6 19l11-7-11-7v14z" />
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Hidden HTML5 Audio Element -->
-                <audio id="bg-audio" preload="metadata"></audio>
-            </div>
-
-            <!-- Invitation Romantic Message below Player -->
-            <div class="reveal-item max-w-[330px] mx-auto mt-7 mb-9">
-                <!-- Horizontal Separator with Cream Heart -->
+            <div class="reveal-item max-w-[330px] mx-auto pt-2 mb-9">
                 <div class="flex items-center justify-center gap-3 mb-3.5">
                     <span class="w-10 h-[1px] bg-cream/55"></span>
                     <span class="text-cream text-xs heart-beat">♥</span>
@@ -387,42 +375,31 @@
                 </div>
 
                 <p id="cfg-invitation-message" class="text-[10px] leading-[1.85] tracking-[0.16em] uppercase text-white/95 font-medium">
-                    CON LA BENDICIÓN DE DIOS Y DE NUESTROS PADRES, TENEMOS EL HONOR DE INVITARLOS A CELEBRAR NUESTRO MATRIMONIO.
+                    CON LA BENDICIÓN DE DIOS COMENZAREMOS UNA NUEVA ETAPA JUNTOS. QUEREMOS QUE SEAS PARTE DE ESTE DÍA TAN ESPECIAL.
                 </p>
             </div>
 
-            <!-- =============================================================
-                 SECCIÓN 5: CEREMONIA Y RECEPCIÓN (Gran Cápsula Vertical #7D8059)
-                 ============================================================= -->
             <div class="reveal-item relative z-20 mx-auto w-full max-w-[365px] bg-olive-capsule rounded-[185px] px-7 py-14 shadow-[0_20px_45px_rgba(48,51,36,0.28)] border border-cream/20 text-center">
                 
                 <!-- BLOQUE 1: CEREMONIA -->
                 <div class="flex flex-col items-center">
-                    <!-- Custom Linear Church Illustration (Two Bell Towers) -->
                     <svg class="w-16 h-16 text-white mb-2" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
-                        <!-- Crosses -->
                         <path d="M22 8v6M19.5 10.5h5" />
                         <path d="M58 8v6M55.5 10.5h5" />
                         <path d="M40 24v6M37.5 26.5h5" />
-                        <!-- Left Tower -->
                         <path d="M15 24l7-10 7 10" />
                         <rect x="16" y="24" width="12" height="44" />
                         <path d="M20 33a2 2 0 0 1 4 0v5h-4v-5z" />
                         <path d="M20 48a2 2 0 0 1 4 0v5h-4v-5z" />
-                        <!-- Right Tower -->
                         <path d="M51 24l7-10 7 10" />
                         <rect x="52" y="24" width="12" height="44" />
                         <path d="M56 33a2 2 0 0 1 4 0v5h-4v-5z" />
                         <path d="M56 48a2 2 0 0 1 4 0v5h-4v-5z" />
-                        <!-- Center Nave -->
                         <path d="M28 40l12-10 12 10" />
                         <line x1="28" y1="68" x2="52" y2="68" />
-                        <!-- Rose Window -->
                         <circle cx="40" cy="43" r="3.5" />
-                        <!-- Main Arched Door -->
                         <path d="M35 68V56a5 5 0 0 1 10 0v12" />
                         <line x1="40" y1="51" x2="40" y2="68" />
-                        <!-- Ground Line -->
                         <line x1="10" y1="68" x2="70" y2="68" />
                     </svg>
 
@@ -430,17 +407,17 @@
                         Ceremonia
                     </h2>
                     <p id="cfg-ceremony-time" class="text-[10px] tracking-[0.22em] uppercase text-white/90 font-semibold mt-1.5">
-                        16:00 HRS
+                        12:00 HRS
                     </p>
 
                     <div class="w-16 h-[1px] bg-cream/35 my-2.5"></div>
 
                     <p id="cfg-ceremony-place" class="text-[9.5px] leading-[1.65] tracking-[0.14em] uppercase text-white/95 max-w-[235px] font-medium">
-                        PARROQUIA DE NUESTRA SEÑORA DE GUADALUPE, CALLE PRINCIPAL #123
+                        PARROQUIA DE SANTIAGO APÓSTOL. TARANDACUAO, GTO.
                     </p>
 
                     <a id="cfg-ceremony-map"
-                       href="https://maps.google.com"
+                       href="https://maps.app.goo.gl/71G99iqHAGXScjTV9"
                        target="_blank"
                        rel="noopener noreferrer"
                        class="mt-4 inline-block bg-cream text-olive-dark hover:bg-white active:scale-95 transition-all px-7 py-2 rounded-full text-[9.5px] font-bold tracking-[0.2em] uppercase shadow-sm">
@@ -448,7 +425,6 @@
                     </a>
                 </div>
 
-                <!-- Spacer between Ceremony & Reception inside Giant Capsule -->
                 <div class="my-9 flex items-center justify-center gap-2 opacity-40">
                     <span class="w-10 h-[1px] bg-cream"></span>
                     <span class="text-[9px] text-cream">♥</span>
@@ -457,20 +433,16 @@
 
                 <!-- BLOQUE 2: RECEPCIÓN -->
                 <div class="flex flex-col items-center">
-                    <!-- Custom Linear Toasting Champagne Glasses Illustration with Sparkles -->
                     <svg class="w-16 h-16 text-white mb-2" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
-                        <!-- Sparkles -->
                         <path d="M40 10v5M37.5 12.5h5" />
                         <path d="M31 15l2 2M49 15l-2 2" />
                         <circle cx="40" cy="20" r="1" fill="currentColor" />
-                        <!-- Left Tilted Glass -->
                         <g transform="rotate(-14 31 44)">
                             <path d="M24 22h14l-1.5 16a5.5 5.5 0 0 1-11 0L24 22z" />
                             <line x1="25" y1="29" x2="37" y2="29" stroke-dasharray="2 1.5" />
                             <line x1="31" y1="43.5" x2="31" y2="62" />
                             <line x1="24" y1="62" x2="38" y2="62" />
                         </g>
-                        <!-- Right Tilted Glass -->
                         <g transform="rotate(14 49 44)">
                             <path d="M42 22h14l-1.5 16a5.5 5.5 0 0 1-11 0L42 22z" />
                             <line x1="43" y1="29" x2="55" y2="29" stroke-dasharray="2 1.5" />
@@ -483,17 +455,17 @@
                         Recepción
                     </h2>
                     <p id="cfg-reception-time" class="text-[10px] tracking-[0.22em] uppercase text-white/90 font-semibold mt-1.5">
-                        18:30 HRS
+                        15:30 HRS
                     </p>
 
                     <div class="w-16 h-[1px] bg-cream/35 my-2.5"></div>
 
                     <p id="cfg-reception-place" class="text-[9.5px] leading-[1.65] tracking-[0.14em] uppercase text-white/95 max-w-[235px] font-medium">
-                        JARDÍN DE EVENTOS LOS OLIVOS, AV. DEL BOSQUE #456
+                        JARDÍN CRUSANTI
                     </p>
 
                     <a id="cfg-reception-map"
-                       href="https://maps.google.com"
+                       href="https://maps.app.goo.gl/VyRoFLKBZRb3oA3bA"
                        target="_blank"
                        rel="noopener noreferrer"
                        class="mt-4 inline-block bg-cream text-olive-dark hover:bg-white active:scale-95 transition-all px-7 py-2 rounded-full text-[9.5px] font-bold tracking-[0.2em] uppercase shadow-sm">
@@ -502,7 +474,6 @@
                 </div>
             </div>
 
-            <!-- White Curved Bottom Backdrop Overlap (So the Capsule's Bottom Curve Protrudes onto White) -->
             <div class="absolute bottom-0 left-0 w-full h-44 pointer-events-none z-10 overflow-hidden">
                 <svg class="w-full h-full" viewBox="0 0 460 180" preserveAspectRatio="none">
                     <path d="M0,125 C95,65 180,95 230,95 C280,95 365,65 460,18 L460,180 L0,180 Z" fill="#FFFFFF" />
@@ -511,23 +482,16 @@
         </section>
 
         <!-- =================================================================
-             SECCIÓN 6: CRONOGRAMA (Fondo Blanco #FFFFFF — 3 Columnas Exactas)
+             SECCIÓN 6: CRONOGRAMA (Fondo Blanco #FFFFFF)
              ================================================================= -->
         <section class="bg-white pt-4 pb-10 px-6 text-olive-dark">
-            <!-- Title in Olive Calligraphy -->
             <h2 class="reveal-item font-calligraphy text-[44px] text-olive-text text-center mb-8">
                 Cronograma
             </h2>
 
-            <!-- 3-Column Vertical Timeline Container -->
             <div class="relative max-w-[335px] mx-auto">
-                <!-- Continuous Vertical Thin Gray/Olive Line (Left Column Axis) -->
                 <div class="absolute left-[15px] top-6 bottom-6 w-[1px] bg-[#C5C7BA]"></div>
-
-                <!-- Dynamic Timeline Items List -->
-                <div id="timeline-list" class="space-y-5">
-                    <!-- Rendered via JS from INVITATION_CONFIG.timeline -->
-                </div>
+                <div id="timeline-list" class="space-y-5"></div>
             </div>
 
             <!-- =============================================================
@@ -547,43 +511,36 @@
         </section>
 
         <!-- =================================================================
-             SECCIÓN 8: ÁLBUM DIGITAL Y CIERRE (Fondo Verde Militar Oscuro #5B5E49)
+             SECCIÓN 8: ÁLBUM DIGITAL Y CIERRE
              ================================================================= -->
         <footer class="relative bg-olive-dark text-cream pt-20 pb-12 px-6 text-center overflow-hidden">
-            <!-- Pronounced Asymmetric Top Wave Curve from White (#FFFFFF) to Dark Military Green (#5B5E49) -->
             <svg class="absolute -top-1 left-0 w-full h-24 pointer-events-none" viewBox="0 0 460 110" preserveAspectRatio="none">
                 <path d="M0,0 L460,0 L460,8 C385,62 275,44 165,58 C78,70 30,85 0,108 Z" fill="#FFFFFF" />
             </svg>
 
             <div class="reveal-item relative z-10 max-w-[330px] mx-auto">
-                <!-- Top Romantic Closing Sentence -->
                 <p id="cfg-footer-phrase" class="text-[9.5px] leading-[1.75] tracking-[0.18em] uppercase text-white/95 font-medium">
-                    ACOMPÁÑANOS A CELEBRAR EL INICIO DE NUESTRA HISTORIA
+                    CON CARIÑO, LOS ESPERAMOS
                 </p>
 
-                <!-- Horizontal Heart Separator -->
                 <div class="flex items-center justify-center gap-3 my-4">
                     <span class="w-10 h-[1px] bg-cream/55"></span>
                     <span class="text-cream text-xs heart-beat">♥</span>
                     <span class="w-10 h-[1px] bg-cream/55"></span>
                 </div>
 
-                <!-- Calligraphy Title: Álbum digital -->
                 <h2 class="font-calligraphy text-[40px] leading-none text-cream mb-3">
                     Álbum digital
                 </h2>
 
-                <!-- Short Instructions -->
                 <p id="cfg-album-text" class="text-[9px] leading-[1.7] tracking-[0.16em] uppercase text-white/85 mb-6">
                     ESCANEA EL CÓDIGO QR O HAZ CLIC EN EL BOTÓN PARA COMPARTIR TUS FOTOS Y VIDEOS DE NUESTRA BODA.
                 </p>
 
-                <!-- Real Dynamic QR Code inside Clean White Rounded Frame -->
                 <div class="inline-flex items-center justify-center bg-white p-3.5 rounded-2xl shadow-lg mb-6 border-2 border-cream/35">
                     <div id="album-qr-container" class="w-[122px] h-[122px] flex items-center justify-center"></div>
                 </div>
 
-                <!-- Action Button: VER ÁLBUM -->
                 <div>
                     <a id="cfg-album-btn"
                        href="https://weddingqr.app/e/gallery-abnm1"
@@ -594,9 +551,8 @@
                     </a>
                 </div>
 
-                <!-- Subtle Couple Footer & Discreet Admin Button -->
                 <div class="mt-10 pt-4 border-t border-cream/15 flex items-center justify-between text-[9px] tracking-[0.2em] uppercase text-cream/50">
-                    <span id="cfg-footer-couple">ANA &amp; JULIO</span>
+                    <span id="cfg-footer-couple">ANA & JULIO</span>
                     <button id="open-admin-btn" type="button" class="hover:text-cream transition underline underline-offset-4">
                         Panel Novios
                     </button>
@@ -605,19 +561,14 @@
         </footer>
     </main>
 
-    <!-- =====================================================================
-         MODAL 1: FORMULARIO INTERACTIVO DE CONFIRMACIÓN (RSVP)
-         ===================================================================== -->
+    <!-- MODAL 1: RSVP -->
     <div id="rsvp-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-xs p-4">
         <div class="bg-olive-hero text-cream w-full max-w-[420px] rounded-[28px] border border-cream/30 shadow-2xl p-6 sm:p-7 relative max-h-[92vh] overflow-y-auto custom-scroll">
-            
-            <!-- Close Button -->
             <button id="close-rsvp-modal" type="button" aria-label="Cerrar ventana"
                     class="absolute top-4 right-4 w-8 h-8 rounded-full bg-olive-dark/60 text-cream hover:bg-cream hover:text-olive-dark flex items-center justify-center transition">
                 ✕
             </button>
 
-            <!-- Modal Header -->
             <div class="text-center mb-5">
                 <span class="text-cream text-xs">♥</span>
                 <h3 class="font-calligraphy text-[40px] leading-tight text-white">Confirmar Asistencia</h3>
@@ -626,9 +577,7 @@
                 </p>
             </div>
 
-            <!-- RSVP Form -->
             <form id="rsvp-form" class="space-y-4 text-left" novalidate>
-                <!-- Full Name -->
                 <div>
                     <label for="rsvp-name" class="block text-[10px] font-semibold tracking-[0.18em] uppercase text-cream mb-1.5">
                         Nombre completo del invitado *
@@ -637,7 +586,6 @@
                            class="w-full rounded-xl bg-olive-dark/75 border border-cream/30 px-4 py-2.5 text-sm text-white placeholder-cream/45 focus:outline-none focus:border-cream" />
                 </div>
 
-                <!-- Attendance Radio Cards -->
                 <div>
                     <span class="block text-[10px] font-semibold tracking-[0.18em] uppercase text-cream mb-1.5">
                         ¿Confirmas tu asistencia? *
@@ -658,7 +606,6 @@
                     </div>
                 </div>
 
-                <!-- Companion Count -->
                 <div id="rsvp-companions-wrapper">
                     <label for="rsvp-guests-count" class="block text-[10px] font-semibold tracking-[0.18em] uppercase text-cream mb-1.5">
                         Número de acompañantes
@@ -673,7 +620,6 @@
                     </select>
                 </div>
 
-                <!-- Companion Names -->
                 <div id="rsvp-companion-names-wrapper" class="hidden">
                     <label for="rsvp-companion-names" class="block text-[10px] font-semibold tracking-[0.18em] uppercase text-cream mb-1.5">
                         Nombre(s) de los acompañantes *
@@ -682,7 +628,6 @@
                            class="w-full rounded-xl bg-olive-dark/75 border border-cream/30 px-4 py-2.5 text-sm text-white placeholder-cream/45 focus:outline-none focus:border-cream" />
                 </div>
 
-                <!-- Dietary Restrictions / Notes -->
                 <div>
                     <label for="rsvp-notes" class="block text-[10px] font-semibold tracking-[0.18em] uppercase text-cream mb-1.5">
                         Restricciones alimenticias o mensaje para los novios
@@ -691,17 +636,14 @@
                               class="w-full rounded-xl bg-olive-dark/75 border border-cream/30 px-4 py-2 text-sm text-white placeholder-cream/45 focus:outline-none focus:border-cream"></textarea>
                 </div>
 
-                <!-- Inline Validation / Duplicate Alert Box (No browser alert()) -->
                 <div id="rsvp-feedback-alert" class="hidden rounded-xl bg-red-900/60 border border-red-300/40 px-3.5 py-2.5 text-xs text-cream"></div>
 
-                <!-- Submit Button -->
                 <button type="submit"
                         class="w-full bg-cream text-olive-dark hover:bg-white active:scale-[0.98] transition font-bold text-[11px] tracking-[0.22em] uppercase py-3.5 rounded-full shadow-lg mt-2">
                     ENVIAR CONFIRMACIÓN
                 </button>
             </form>
 
-            <!-- Confirmation Success Summary -->
             <div id="rsvp-success-view" class="hidden text-center py-4 space-y-4">
                 <div class="w-14 h-14 rounded-full bg-cream text-olive-dark mx-auto flex items-center justify-center text-2xl font-bold shadow">
                     ✓
@@ -716,9 +658,7 @@
         </div>
     </div>
 
-    <!-- =====================================================================
-         MODAL 2: PANEL ADMINISTRATIVO PARA NOVIOS (CONSULTA & EXPORTACIÓN)
-         ===================================================================== -->
+    <!-- MODAL 2: PANEL NOVIOS -->
     <div id="admin-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 backdrop-blur-xs p-4">
         <div class="bg-white text-olive-dark w-full max-w-[460px] rounded-[28px] border border-olive-hero/25 shadow-2xl p-6 relative max-h-[88vh] flex flex-col">
             <button id="close-admin-modal" type="button"
@@ -731,12 +671,8 @@
                 0 Respuestas registradas
             </p>
 
-            <!-- List of Stored RSVPs -->
-            <div id="admin-rsvp-list" class="flex-1 overflow-y-auto custom-scroll space-y-2.5 pr-1 text-left text-xs">
-                <!-- Populated dynamically -->
-            </div>
+            <div id="admin-rsvp-list" class="flex-1 overflow-y-auto custom-scroll space-y-2.5 pr-1 text-left text-xs"></div>
 
-            <!-- Export Actions -->
             <div class="mt-4 pt-3 border-t border-olive-hero/15 flex flex-wrap gap-2 justify-center">
                 <button id="export-csv-btn" type="button"
                         class="bg-olive-hero text-white px-4 py-2 rounded-full text-[10px] font-semibold tracking-[0.16em] uppercase hover:bg-olive-dark transition">
@@ -750,33 +686,15 @@
         </div>
     </div>
 
-    <!-- =====================================================================
-         CENTRALIZED EDITABLE CONFIGURATION & INTERACTIVE LOGIC
-         ===================================================================== -->
     <script>
-        /**
-         * ===================================================================
-         * INVITATION_CONFIG: CONFIGURACIÓN CENTRALIZADA Y EDITABLE
-         * Modifica aquí todos los textos, fechas, enlaces, fotos y canciones.
-         * ===================================================================
-         */
         const INVITATION_CONFIG = {
-            // 1. Nombres e Iniciales
             partner1Name: "Ana",
             partner2Name: "Julio",
             partner1Initial: "A",
             partner2Initial: "J",
-
-            // 2. Fecha del Evento
             dateDisplayPill: "19 · DICIEMBRE · 2026",
-            // Formato ISO para el contador regresivo en tiempo real (YYYY-MM-DDTHH:MM:SS)
             eventDateISO: "2026-12-19T16:00:00",
-
-            // 3. Fotografía Principal de los Novios (URL o ruta relativa ./foto.webp)
-          couplePhotoUrl: "./novios.jpg",
-
-
-            // 4. Reproductor Musical (Lista de canciones o canción principal)
+            couplePhotoUrl: "./novios.jpg",
             playlist: [
                 {
                     title: "Until I Found You",
@@ -791,11 +709,7 @@
                     fallbackDuration: "4:10"
                 }
             ],
-
-            // 5. Mensaje de Invitación
             invitationMessage: "CON LA BENDICIÓN DE DIOS COMENZAREMOS UNA NUEVA ETAPA JUNTOS. QUEREMOS QUE SEAS PARTE DE ESTE DÍA TAN ESPECIAL.",
-
-            // 6. Ceremonia y Recepción
             ceremony: {
                 time: "12:00 HRS",
                 venueAndAddress: "PARROQUIA DE SANTIAGO APÓSTOL. TARANDACUAO, GTO.",
@@ -806,8 +720,6 @@
                 venueAndAddress: "JARDÍN CRUSANTI",
                 googleMapsUrl: "https://maps.app.goo.gl/VyRoFLKBZRb3oA3bA"
             },
-
-            // 7. Cronograma (8 actividades con iconos lineales minimalistas exactos)
             timeline: [
                 { time: "16:00 HRS", title: "CEREMONIA", icon: "church" },
                 { time: "18:30 HRS", title: "RECEPCIÓN", icon: "arch" },
@@ -818,18 +730,11 @@
                 { time: "22:30 HRS", title: "ABRIMOS PISTA", icon: "music" },
                 { time: "02:00 HRS", title: "FIN DE LA NOCHE", icon: "moon" }
             ],
-
-            // 8. Álbum Digital & Código QR
             footerPhrase: "CON CARIÑO, LOS ESPERAMOS",
             albumInstructions: "ESCANEA EL CÓDIGO QR O HAZ CLIC EN EL BOTÓN PARA COMPARTIR TUS FOTOS Y VIDEOS DE NUESTRA BODA.",
             albumUrl: "https://weddingqr.app/e/gallery-abnm1"
         };
 
-        /**
-         * ===================================================================
-         * INICIALIZACIÓN DE LA APLICACIÓN
-         * ===================================================================
-         */
         document.addEventListener("DOMContentLoaded", () => {
             populateStaticContent();
             initCountdown();
@@ -840,7 +745,6 @@
             initScrollReveal();
         });
 
-        // 1. Inyectar datos desde INVITATION_CONFIG al DOM
         function populateStaticContent() {
             document.title = `Nuestra Boda — ${INVITATION_CONFIG.partner1Name} & ${INVITATION_CONFIG.partner2Name}`;
             document.getElementById("cfg-initial-1").textContent = INVITATION_CONFIG.partner1Initial;
@@ -868,7 +772,6 @@
             document.getElementById("cfg-footer-couple").textContent = `${INVITATION_CONFIG.partner1Name.toUpperCase()} & ${INVITATION_CONFIG.partner2Name.toUpperCase()}`;
         }
 
-        // 2. Contador Regresivo en Tiempo Real
         function initCountdown() {
             const targetTime = new Date(INVITATION_CONFIG.eventDateISO).getTime();
             const daysEl = document.getElementById("cd-days");
@@ -903,7 +806,6 @@
             setInterval(update, 1000);
         }
 
-        // 3. Reproductor Musical Interactivo (Sin Autoplay)
         function initMusicPlayer() {
             const audio = document.getElementById("bg-audio");
             const playBtn = document.getElementById("music-play-btn");
@@ -934,7 +836,7 @@
                 durationEl.textContent = track.fallbackDuration || "0:00";
                 currentTimeEl.textContent = "0:00";
                 progressSlider.value = 0;
-                progressSlider.style.background = "linear-gradient(to right, #F4E8B8 0%, rgba(244,232,184,0.28) 0%)";
+                progressSlider.style.background = "linear-gradient(to right, #F4E8B8 0%, rgba(244,232,184,0.32) 0%)";
                 audio.src = track.audioUrl;
             }
 
@@ -988,7 +890,7 @@
                 if (audio.duration && isFinite(audio.duration)) {
                     const pct = (audio.currentTime / audio.duration) * 100;
                     progressSlider.value = pct;
-                    progressSlider.style.background = `linear-gradient(to right, #F4E8B8 ${pct}%, rgba(244,232,184,0.28) ${pct}%)`;
+                    progressSlider.style.background = `linear-gradient(to right, #F4E8B8 ${pct}%, rgba(244,232,184,0.32) ${pct}%)`;
                     currentTimeEl.textContent = formatTime(audio.currentTime);
                 }
             });
@@ -1006,7 +908,6 @@
             });
         }
 
-        // 4. Renderizado del Cronograma en 3 Columnas Exactas
         function getTimelineSVG(iconKey) {
             const svgs = {
                 church: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3M10.5 3.5h3"/><path d="M6 10l6-5 6 5"/><path d="M4 21V10h16v11"/><path d="M10 21v-5a2 2 0 0 1 4 0v5"/></svg>`,
@@ -1030,17 +931,12 @@
                 row.className = "reveal-item grid grid-cols-[30px_54px_1fr] items-center gap-3 relative";
 
                 row.innerHTML = `
-                    <!-- Columna 1: Punto sólido alineado sobre la línea vertical -->
                     <div class="flex items-center justify-center relative z-10">
                         <span class="w-2.5 h-2.5 rounded-full bg-[#9DA08E] ring-4 ring-white"></span>
                     </div>
-
-                    <!-- Columna 2: Círculo Verde Militar Oscuro (#5D604B) con Icono Lineal -->
                     <div class="w-[46px] h-[46px] rounded-full bg-olive-dark text-cream flex items-center justify-center shadow-sm mx-auto">
                         ${getTimelineSVG(item.icon)}
                     </div>
-
-                    <!-- Columna 3: Hora arriba y Nombre de Actividad en mayúsculas abajo -->
                     <div class="text-left pl-1">
                         <p class="text-[8.5px] tracking-[0.2em] uppercase text-olive-text/80 font-semibold leading-tight">
                             ${item.time}
@@ -1054,7 +950,6 @@
             });
         }
 
-        // 5. Generación del Código QR Real del Álbum Digital
         function generateAlbumQR() {
             const qrTarget = document.getElementById("album-qr-container");
             qrTarget.innerHTML = "";
@@ -1069,16 +964,12 @@
                     correctLevel: QRCode.CorrectLevel.M
                 });
             } else {
-                // Fallback en caso de red restringida
                 qrTarget.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(INVITATION_CONFIG.albumUrl)}" alt="QR Álbum Digital" class="w-full h-full object-contain" />`;
             }
         }
 
-        // 6. Sistema Completo de Confirmación RSVP (Modal + Validación + Persistencia + Panel Novios)
         function initRSVPSystem() {
             const STORAGE_KEY = "boda_ana_julio_rsvps_v1";
-
-        // ⚠️ PEGA AQUÍ LA URL DE TU GOOGLE APPS SCRIPT (la que termina en /exec)
             const scriptURL = "https://script.google.com/macros/s/AKfycbxkeur2CKFU3qG6e5-ubwvSRcNAyACbkFBchjzfOkwlrCVjvWo39z-YFoWchKL8jCySLg/exec";
 
             const modal = document.getElementById("rsvp-modal");
@@ -1138,7 +1029,6 @@
                 if (e.target === modal) closeModal();
             });
 
-            // Mostrar/Ocultar acompañantes según asistencia
             statusRadios.forEach((radio) => {
                 radio.addEventListener("change", () => {
                     const attending = document.querySelector('input[name="rsvp-status"]:checked').value === "Sí asistiré";
@@ -1164,7 +1054,7 @@
                 }
             });
 
-form.addEventListener("submit", (e) => {
+            form.addEventListener("submit", (e) => {
                 e.preventDefault();
                 hideAlert();
 
@@ -1193,7 +1083,6 @@ form.addEventListener("submit", (e) => {
                     return;
                 }
 
-                // 1. Declarar la fecha y hora primero
                 const timestamp = new Date().toLocaleString("es-MX");
 
                 const newEntry = {
@@ -1206,11 +1095,9 @@ form.addEventListener("submit", (e) => {
                     timestamp
                 };
 
-                // 2. Guardar localmente
                 existing.push(newEntry);
                 saveRSVPs(existing);
 
-                // 3. Enviar los datos en segundo plano hacia Google Sheets de forma segura
                 const urlParams = new URLSearchParams();
                 urlParams.append("Fecha", timestamp);
                 urlParams.append("Nombre", name);
@@ -1231,7 +1118,6 @@ form.addEventListener("submit", (e) => {
                     .catch(error => console.error("Error al sincronizar con Sheets:", error));
                 }
 
-                // 4. Mostrar pantalla de éxito
                 form.classList.add("hidden");
                 successView.classList.remove("hidden");
                 summaryText.innerHTML = `
@@ -1244,7 +1130,6 @@ form.addEventListener("submit", (e) => {
                 companionNamesWrapper.classList.add("hidden");
             });
 
-            // Panel Administrativo para los Novios
             const adminModal = document.getElementById("admin-modal");
             const openAdminBtn = document.getElementById("open-admin-btn");
             const closeAdminBtn = document.getElementById("close-admin-modal");
@@ -1320,7 +1205,6 @@ form.addEventListener("submit", (e) => {
             }
         }
 
-        // 7. Animaciones Suaves al Desplazar (IntersectionObserver)
         function initScrollReveal() {
             const items = document.querySelectorAll(".reveal-item");
             const observer = new IntersectionObserver((entries) => {
