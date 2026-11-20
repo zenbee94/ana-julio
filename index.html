@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- [EDITABLE - TÍTULO DE LA PESTAÑA] Se actualiza automáticamente desde INVITATION_CONFIG -->
     <title>Nuestra Boda — Ana & Julio</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        /* =====================================================================
+           [EDITABLE - PALETA DE COLORES Y FUENTES DE LA PLANTILLA]
+           Cambia aquí los colores hexadecimales si deseas adaptar el diseño a
+           otro evento (XV años, bautizo, boda con otra temática, etc.).
+           ===================================================================== */
         tailwind.config = {
             theme: {
                 extend: {
@@ -85,7 +91,7 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Zona unificada de fotografía + ondas + reproductor */
+        /* Zona unificada de fotografía principal + ondas + reproductor */
         .photo-player-stage {
             position: relative;
             width: 100%;
@@ -100,6 +106,7 @@
             }
         }
 
+        /* [EDITABLE - ENCUADRE FOTO 1] Ajusta object-position (ej. "center 20%" o "center top") */
         .photo-player-stage img.couple-bg-photo {
             position: absolute;
             inset: 0;
@@ -131,6 +138,7 @@
             }
         }
 
+        /* [EDITABLE - ENCUADRE FOTO 2] Ajusta object-position según la foto */
         .secondary-photo-stage img.couple-secondary-photo {
             position: absolute;
             inset: 0;
@@ -207,23 +215,6 @@
 </head>
 <body>
 
-    <!-- Subtle Botanical Side Ornaments for Desktop View -->
-    <div class="hidden lg:block fixed top-12 left-12 pointer-events-none opacity-25 text-olive-hero">
-        <svg width="140" height="140" viewBox="0 0 140 140" fill="none" stroke="currentColor" stroke-width="1">
-            <path d="M10 130 C 40 70, 80 40, 130 10" />
-            <path d="M45 85 C 35 65, 45 45, 62 42 C 62 60, 55 75, 45 85 Z" />
-            <path d="M75 58 C 92 58, 108 68, 112 82 C 95 82, 82 72, 75 58 Z" />
-            <path d="M92 38 C 85 22, 92 10, 105 8 C 105 20, 100 30, 92 38 Z" />
-        </svg>
-    </div>
-    <div class="hidden lg:block fixed bottom-12 right-12 pointer-events-none opacity-25 text-olive-hero rotate-180">
-        <svg width="140" height="140" viewBox="0 0 140 140" fill="none" stroke="currentColor" stroke-width="1">
-            <path d="M10 130 C 40 70, 80 40, 130 10" />
-            <path d="M45 85 C 35 65, 45 45, 62 42 C 62 60, 55 75, 45 85 Z" />
-            <path d="M75 58 C 92 58, 108 68, 112 82 C 95 82, 82 72, 75 58 Z" />
-        </svg>
-    </div>
-
     <main class="editorial-card">
 
         <!-- =================================================================
@@ -235,7 +226,7 @@
                 <path d="M62 -15 C 102 33, 145 62, 205 84" stroke="currentColor" stroke-width="0.9" stroke-dasharray="3 2" />
             </svg>
 
-            <!-- Logo Monograma SVG Oficial (ayj.svg) -->
+            <!-- [EDITABLE - LOGO / MONOGRAMA] Imagen SVG cargada desde monogramLogoUrl -->
             <div class="reveal-item is-visible w-32 h-32 mx-auto mb-5 flex items-center justify-center">
                 <img id="cfg-monogram-logo"
                      src="./ayj.svg"
@@ -243,16 +234,19 @@
                      class="w-full h-full object-contain drop-shadow-sm" />
             </div>
 
+            <!-- [EDITABLE - ETIQUETA SUPERIOR] -->
             <p class="reveal-item is-visible text-[10px] tracking-[0.34em] uppercase text-cream/90 font-medium mb-1">
                 NUESTRA BODA
             </p>
 
+            <!-- [EDITABLE - NOMBRES PRINCIPALES] Se rellenan desde partner1Name y partner2Name -->
             <h1 class="reveal-item is-visible font-calligraphy text-[58px] leading-[1.08] text-white drop-shadow-sm my-1 flex items-center justify-center flex-wrap gap-x-2.5">
                 <span id="cfg-name-1">Ana</span>
                 <span class="text-[38px] text-cream/90 font-normal translate-y-0.5">&</span>
                 <span id="cfg-name-2">Julio</span>
             </h1>
 
+            <!-- [EDITABLE - FECHA VISUAL] Se rellena desde dateDisplayPill -->
             <div class="reveal-item is-visible flex items-center justify-center gap-3 mt-2 mb-6">
                 <span class="w-7 h-[1px] bg-cream/45"></span>
                 <div class="bg-cream text-olive-dark px-5 py-1.5 rounded-full text-[10px] font-semibold tracking-[0.22em] uppercase shadow-sm">
@@ -265,6 +259,7 @@
                 FALTAN:
             </p>
 
+            <!-- CUENTA REGRESIVA (calculada con eventDateISO) -->
             <div id="countdown-grid" class="reveal-item is-visible grid grid-cols-4 max-w-[310px] mx-auto gap-2 text-center">
                 <div>
                     <div id="cd-days" class="font-editorial text-[34px] leading-none font-normal text-white">00</div>
@@ -297,9 +292,10 @@
         </header>
 
         <!-- =================================================================
-             SECCIÓN 2 & 3: FOTOGRAFÍA EXTENDIDA ENTRE CURVAS + REPRODUCTOR SUPERPUESTO
+             SECCIÓN 2 & 3: FOTOGRAFÍA PRINCIPAL + REPRODUCTOR MUSICAL
              ================================================================= -->
         <section class="photo-player-stage select-none">
+            <!-- [EDITABLE - FOTO 1] Se carga desde couplePhotoUrl -->
             <img id="cfg-couple-photo"
                  src="./novios.jpg"
                  alt="Fotografía de Ana y Julio"
@@ -311,6 +307,7 @@
                 <path d="M0,111.5 C48,85.5 115,71.5 225,63.5 C335,55.5 420,45.5 460,5.5" fill="none" stroke="#F4E8B8" stroke-width="2.5" stroke-linecap="round" />
             </svg>
 
+            <!-- [EDITABLE - PLAYLIST] Canciones configuradas en INVITATION_CONFIG.playlist -->
             <div class="relative z-20 px-6 pt-[285px] sm:pt-[315px] pb-[155px] sm:pb-[165px] flex justify-center">
                 <div class="reveal-item is-visible w-full max-w-[300px] bg-[#555843]/95 backdrop-blur-xs rounded-[24px] px-6 py-5 shadow-[0_20px_42px_rgba(32,35,23,0.48)] border-[1.5px] border-cream/75 text-center text-cream">
                     <h2 id="cfg-song-title" class="font-calligraphy text-[32px] leading-tight text-white tracking-wide truncate">
@@ -373,10 +370,11 @@
         </section>
 
         <!-- =================================================================
-             SECCIÓN 4 & 5: MENSAJE DE INVITACIÓN + CEREMONIA Y RECEPCIÓN
+             SECCIÓN 4 & 5: MENSAJE DE INVITACIÓN + LUGARES (CEREMONIA / RECEPCIÓN)
              ================================================================= -->
         <section class="relative bg-olive-sage px-6 pb-8 text-center text-cream">
 
+            <!-- [EDITABLE - MENSAJE PRINCIPAL] Se rellena desde invitationMessage -->
             <div class="reveal-item max-w-[330px] mx-auto pt-2 mb-9">
                 <div class="flex items-center justify-center gap-3 mb-3.5">
                     <span class="w-10 h-[1px] bg-cream/55"></span>
@@ -391,7 +389,7 @@
 
             <div class="reveal-item relative z-20 mx-auto w-full max-w-[365px] bg-olive-capsule rounded-[185px] px-7 py-14 shadow-[0_20px_45px_rgba(48,51,36,0.28)] border border-cream/20 text-center">
                 
-                <!-- BLOQUE 1: CEREMONIA -->
+                <!-- [EDITABLE - BLOQUE 1: CEREMONIA] Datos desde INVITATION_CONFIG.ceremony -->
                 <div class="flex flex-col items-center">
                     <svg class="w-16 h-16 text-white mb-2" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 8v6M19.5 10.5h5" />
@@ -441,7 +439,7 @@
                     <span class="w-10 h-[1px] bg-cream"></span>
                 </div>
 
-                <!-- BLOQUE 2: RECEPCIÓN -->
+                <!-- [EDITABLE - BLOQUE 2: RECEPCIÓN] Datos desde INVITATION_CONFIG.reception -->
                 <div class="flex flex-col items-center">
                     <svg class="w-16 h-16 text-white mb-2" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M40 10v5M37.5 12.5h5" />
@@ -492,21 +490,20 @@
         </section>
 
         <!-- =================================================================
-             SECCIÓN 6: CRONOGRAMA (Fondo Blanco #FFFFFF)
+             SECCIÓN 6 & 7: CRONOGRAMA + BOTÓN RSVP
              ================================================================= -->
         <section class="bg-white pt-4 pb-10 px-6 text-olive-dark">
             <h2 class="reveal-item font-calligraphy text-[44px] text-olive-text text-center mb-8">
                 Cronograma
             </h2>
 
+            <!-- [EDITABLE - CRONOGRAMA] Se renderiza desde INVITATION_CONFIG.timeline -->
             <div class="relative max-w-[335px] mx-auto">
                 <div class="absolute left-[15px] top-6 bottom-6 w-[1px] bg-[#C5C7BA]"></div>
                 <div id="timeline-list" class="space-y-5"></div>
             </div>
 
-            <!-- =============================================================
-                 SECCIÓN 7: BOTÓN DE CONFIRMACIÓN DE ASISTENCIA (RSVP)
-                 ============================================================= -->
+            <!-- BOTÓN CONFIRMAR ASISTENCIA -->
             <div class="reveal-item mt-12 mb-4 text-center">
                 <button id="open-rsvp-modal"
                         type="button"
@@ -521,9 +518,10 @@
         </section>
 
         <!-- =================================================================
-             SECCIÓN 7.5: SEGUNDA FOTOGRAFÍA DE LOS NOVIOS ENTRE CURVAS
+             SECCIÓN 7.5: SEGUNDA FOTOGRAFÍA ENTRE CURVAS (ANTES DEL ÁLBUM)
              ================================================================= -->
         <section class="secondary-photo-stage select-none">
+            <!-- [EDITABLE - FOTO 2] Se carga desde secondaryPhotoUrl -->
             <img id="cfg-secondary-photo"
                  src="./novios2.jpg"
                  alt="Segunda fotografía de Ana y Julio"
@@ -542,10 +540,11 @@
         </section>
 
         <!-- =================================================================
-             SECCIÓN 8: ÁLBUM DIGITAL Y CIERRE
+             SECCIÓN 8: ÁLBUM DIGITAL, CÓDIGO QR Y CIERRE
              ================================================================= -->
         <footer class="relative bg-olive-dark text-cream pt-6 pb-12 px-6 text-center overflow-hidden">
             <div class="reveal-item relative z-10 max-w-[330px] mx-auto">
+                <!-- [EDITABLE - FRASE DE CIERRE] -->
                 <p id="cfg-footer-phrase" class="text-[9.5px] leading-[1.75] tracking-[0.18em] uppercase text-white/95 font-medium">
                     CON CARIÑO, LOS ESPERAMOS
                 </p>
@@ -560,14 +559,17 @@
                     Álbum digital
                 </h2>
 
+                <!-- [EDITABLE - INSTRUCCIONES DEL ÁLBUM] -->
                 <p id="cfg-album-text" class="text-[9px] leading-[1.7] tracking-[0.16em] uppercase text-white/85 mb-6">
                     ESCANEA EL CÓDIGO QR O HAZ CLIC EN EL BOTÓN PARA COMPARTIR TUS FOTOS Y VIDEOS DE NUESTRA BODA.
                 </p>
 
+                <!-- QR generado automáticamente desde albumUrl -->
                 <div class="inline-flex items-center justify-center bg-white p-3.5 rounded-2xl shadow-lg mb-6 border-2 border-cream/35">
                     <div id="album-qr-container" class="w-[122px] h-[122px] flex items-center justify-center"></div>
                 </div>
 
+                <!-- [EDITABLE - ENLACE AL ÁLBUM] -->
                 <div>
                     <a id="cfg-album-btn"
                        href="https://weddingqr.app/e/gallery-abnm1"
@@ -588,7 +590,7 @@
         </footer>
     </main>
 
-    <!-- MODAL 1: RSVP -->
+    <!-- MODAL 1: FORMULARIO RSVP -->
     <div id="rsvp-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-xs p-4">
         <div class="bg-olive-hero text-cream w-full max-w-[420px] rounded-[28px] border border-cream/30 shadow-2xl p-6 sm:p-7 relative max-h-[92vh] overflow-y-auto custom-scroll">
             <button id="close-rsvp-modal" type="button" aria-label="Cerrar ventana"
@@ -685,7 +687,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2: PANEL NOVIOS -->
+    <!-- MODAL 2: PANEL DE CONFIRMACIONES -->
     <div id="admin-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 backdrop-blur-xs p-4">
         <div class="bg-white text-olive-dark w-full max-w-[460px] rounded-[28px] border border-olive-hero/25 shadow-2xl p-6 relative max-h-[88vh] flex flex-col">
             <button id="close-admin-modal" type="button"
@@ -714,14 +716,30 @@
     </div>
 
     <script>
+        /* =====================================================================
+           [EDITABLE - CONFIGURACIÓN GENERAL DEL EVENTO]
+           Modifica este objeto para reutilizar la invitación en otros eventos.
+           ===================================================================== */
         const INVITATION_CONFIG = {
+            // Nombres o títulos principales del evento
             partner1Name: "Ana",
             partner2Name: "Julio",
+
+            // Ruta de la imagen o logotipo SVG del monograma en la portada
             monogramLogoUrl: "./ayj.svg",
+
+            // Texto de fecha visible en la píldora superior
             dateDisplayPill: "19 · DICIEMBRE · 2026",
-            eventDateISO: "2026-12-19T16:00:00",
+
+            // Fecha y hora objetivo de la cuenta regresiva (AAAA-MM-DDTHH:MM:SS)
+            // Calculado a las 00:00 h del 19 de diciembre de 2026
+            eventDateISO: "2026-12-19T00:00:00",
+
+            // Fotografías del evento (rutas locales en la carpeta o URLs externas)
             couplePhotoUrl: "./novios.jpg",
             secondaryPhotoUrl: "./novios2.jpg",
+
+            // Lista de canciones para el reproductor
             playlist: [
                 {
                     title: "Until I Found You",
@@ -736,17 +754,25 @@
                     fallbackDuration: "4:10"
                 }
             ],
+
+            // Mensaje de bienvenida / invitación
             invitationMessage: "CON LA BENDICIÓN DE DIOS COMENZAREMOS UNA NUEVA ETAPA JUNTOS. QUEREMOS QUE SEAS PARTE DE ESTE DÍA TAN ESPECIAL.",
+
+            // Datos del primer lugar (Ceremonia / Evento principal)
             ceremony: {
                 time: "12:00 HRS",
                 venueAndAddress: "PARROQUIA DE SANTIAGO APÓSTOL. TARANDACUAO, GTO.",
                 googleMapsUrl: "https://maps.app.goo.gl/71G99iqHAGXScjTV9"
             },
+
+            // Datos del segundo lugar (Recepción / Fiesta)
             reception: {
                 time: "15:30 HRS",
                 venueAndAddress: "JARDÍN CRUSANTI",
                 googleMapsUrl: "https://maps.app.goo.gl/VyRoFLKBZRb3oA3bA"
             },
+
+            // Itinerario / Cronograma (iconos disponibles: church, arch, hearts, glasses, dance, dinner, music, moon)
             timeline: [
                 { time: "16:00 HRS", title: "CEREMONIA", icon: "church" },
                 { time: "18:30 HRS", title: "RECEPCIÓN", icon: "arch" },
@@ -757,6 +783,8 @@
                 { time: "22:30 HRS", title: "ABRIMOS PISTA", icon: "music" },
                 { time: "02:00 HRS", title: "FIN DE LA NOCHE", icon: "moon" }
             ],
+
+            // Textos y enlace del álbum digital / código QR
             footerPhrase: "CON CARIÑO, LOS ESPERAMOS",
             albumInstructions: "ESCANEA EL CÓDIGO QR O HAZ CLIC EN EL BOTÓN PARA COMPARTIR TUS FOTOS Y VIDEOS DE NUESTRA BODA.",
             albumUrl: "https://weddingqr.app/e/gallery-abnm1"
@@ -772,8 +800,10 @@
             initScrollReveal();
         });
 
+        /* Vuelca los valores de INVITATION_CONFIG en el DOM */
         function populateStaticContent() {
             document.title = `Nuestra Boda — ${INVITATION_CONFIG.partner1Name} & ${INVITATION_CONFIG.partner2Name}`;
+
             const monogramEl = document.getElementById("cfg-monogram-logo");
             if (monogramEl && INVITATION_CONFIG.monogramLogoUrl) {
                 monogramEl.src = INVITATION_CONFIG.monogramLogoUrl;
@@ -806,6 +836,7 @@
             document.getElementById("cfg-footer-couple").textContent = `${INVITATION_CONFIG.partner1Name.toUpperCase()} & ${INVITATION_CONFIG.partner2Name.toUpperCase()}`;
         }
 
+        /* Lógica de cuenta regresiva en tiempo real */
         function initCountdown() {
             const targetTime = new Date(INVITATION_CONFIG.eventDateISO).getTime();
             const daysEl = document.getElementById("cd-days");
@@ -840,6 +871,7 @@
             setInterval(update, 1000);
         }
 
+        /* Lógica del reproductor de audio */
         function initMusicPlayer() {
             const audio = document.getElementById("bg-audio");
             const playBtn = document.getElementById("music-play-btn");
@@ -1002,6 +1034,10 @@
             }
         }
 
+        /* =====================================================================
+           [EDITABLE - SISTEMA RSVP Y GOOGLE SHEETS]
+           Cambia STORAGE_KEY y scriptURL si creas otro formulario / hoja nueva.
+           ===================================================================== */
         function initRSVPSystem() {
             const STORAGE_KEY = "boda_ana_julio_rsvps_v1";
             const scriptURL = "https://script.google.com/macros/s/AKfycbxkeur2CKFU3qG6e5-ubwvSRcNAyACbkFBchjzfOkwlrCVjvWo39z-YFoWchKL8jCySLg/exec";
