@@ -374,7 +374,7 @@
              ================================================================= -->
         <section class="relative bg-olive-sage px-6 pb-8 text-center text-cream">
 
-            <!-- [EDITABLE - MENSAJE PRINCIPAL] Se rellena desde invitationMessage -->
+            <!-- [EDITABLE - MENSAJE PRINCIPAL Y CITA] Se rellenan desde invitationMessage y scriptureQuote -->
             <div class="reveal-item max-w-[330px] mx-auto pt-2 mb-9">
                 <div class="flex items-center justify-center gap-3 mb-3.5">
                     <span class="w-10 h-[1px] bg-cream/55"></span>
@@ -384,6 +384,16 @@
 
                 <p id="cfg-invitation-message" class="text-[10px] leading-[1.85] tracking-[0.16em] uppercase text-white/95 font-medium">
                     CON LA BENDICIÓN DE DIOS COMENZAREMOS UNA NUEVA ETAPA JUNTOS. QUEREMOS QUE SEAS PARTE DE ESTE DÍA TAN ESPECIAL.
+                </p>
+
+                <div class="flex items-center justify-center gap-3 my-4">
+                    <span class="w-10 h-[1px] bg-cream/55"></span>
+                    <span class="text-cream text-xs heart-beat">♥</span>
+                    <span class="w-10 h-[1px] bg-cream/55"></span>
+                </div>
+
+                <p id="cfg-scripture-quote" class="text-[10px] leading-[1.85] tracking-[0.16em] uppercase text-white/95 font-medium">
+                    "POR NUESTRA PARTE, HEMOS CONOCIDO EL AMOR QUE DIOS NOS TIENE, Y HEMOS CREÍDO EN ÉL. DIOS ES AMOR: EL QUE PERMANECE EN EL AMOR PERMANECE EN DIOS Y DIOS EN ÉL" -JUAN 4:16
                 </p>
             </div>
 
@@ -415,7 +425,7 @@
                         Ceremonia
                     </h2>
                     <p id="cfg-ceremony-time" class="text-[10px] tracking-[0.22em] uppercase text-white/90 font-semibold mt-1.5">
-                        12:00 HRS
+                        4:00 PM
                     </p>
 
                     <div class="w-16 h-[1px] bg-cream/35 my-2.5"></div>
@@ -463,7 +473,7 @@
                         Recepción
                     </h2>
                     <p id="cfg-reception-time" class="text-[10px] tracking-[0.22em] uppercase text-white/90 font-semibold mt-1.5">
-                        15:30 HRS
+                        6:00 PM
                     </p>
 
                     <div class="w-16 h-[1px] bg-cream/35 my-2.5"></div>
@@ -758,30 +768,33 @@
             // Mensaje de bienvenida / invitación
             invitationMessage: "CON LA BENDICIÓN DE DIOS COMENZAREMOS UNA NUEVA ETAPA JUNTOS. QUEREMOS QUE SEAS PARTE DE ESTE DÍA TAN ESPECIAL.",
 
+            // Cita o frase adicional separada por corazón
+            scriptureQuote: "\"POR NUESTRA PARTE, HEMOS CONOCIDO EL AMOR QUE DIOS NOS TIENE, Y HEMOS CREÍDO EN ÉL. DIOS ES AMOR: EL QUE PERMANECE EN EL AMOR PERMANECE EN DIOS Y DIOS EN ÉL\" -JUAN 4:16",
+
             // Datos del primer lugar (Ceremonia / Evento principal)
             ceremony: {
-                time: "12:00 HRS",
+                time: "4:00 PM",
                 venueAndAddress: "PARROQUIA DE SANTIAGO APÓSTOL. TARANDACUAO, GTO.",
                 googleMapsUrl: "https://maps.app.goo.gl/71G99iqHAGXScjTV9"
             },
 
             // Datos del segundo lugar (Recepción / Fiesta)
             reception: {
-                time: "15:30 HRS",
+                time: "6:00 PM",
                 venueAndAddress: "JARDÍN CRUSANTI",
                 googleMapsUrl: "https://maps.app.goo.gl/VyRoFLKBZRb3oA3bA"
             },
 
-            // Itinerario / Cronograma (iconos disponibles: church, arch, hearts, glasses, dance, dinner, music, moon)
+            // Itinerario / Cronograma (iconos disponibles: church, arch, hearts, glasses, dance, bouquet, music, moon)
             timeline: [
-                { time: "16:00 HRS", title: "CEREMONIA", icon: "church" },
-                { time: "18:30 HRS", title: "RECEPCIÓN", icon: "arch" },
-                { time: "19:15 HRS", title: "ENTRADA DE LOS NOVIOS", icon: "hearts" },
-                { time: "19:45 HRS", title: "BRINDIS", icon: "glasses" },
-                { time: "20:15 HRS", title: "PRIMER BAILE", icon: "dance" },
-                { time: "21:00 HRS", title: "CENA", icon: "dinner" },
-                { time: "22:30 HRS", title: "ABRIMOS PISTA", icon: "music" },
-                { time: "02:00 HRS", title: "FIN DE LA NOCHE", icon: "moon" }
+                { time: "4:00 PM", title: "CEREMONIA", icon: "church" },
+                { time: "6:00 PM", title: "RECEPCIÓN", icon: "arch" },
+                { time: "6:15 PM", title: "ENTRADA DE LOS NOVIOS", icon: "hearts" },
+                { time: "9:00 PM", title: "BRINDIS", icon: "glasses" },
+                { time: "9:30 PM", title: "PRIMER BAILE", icon: "dance" },
+                { time: "9:45 PM", title: "ABRIMOS PISTA", icon: "music" },
+                { time: "10:00 PM", title: "RAMO", icon: "bouquet" },
+                { time: "12:00 PM", title: "FIN DE LA NOCHE", icon: "moon" }
             ],
 
             // Textos y enlace del álbum digital / código QR
@@ -821,6 +834,7 @@
             document.getElementById("cfg-secondary-photo").alt = `${INVITATION_CONFIG.partner1Name} y ${INVITATION_CONFIG.partner2Name}`;
 
             document.getElementById("cfg-invitation-message").textContent = INVITATION_CONFIG.invitationMessage;
+            document.getElementById("cfg-scripture-quote").textContent = INVITATION_CONFIG.scriptureQuote;
 
             document.getElementById("cfg-ceremony-time").textContent = INVITATION_CONFIG.ceremony.time;
             document.getElementById("cfg-ceremony-place").textContent = INVITATION_CONFIG.ceremony.venueAndAddress;
@@ -981,7 +995,7 @@
                 hearts: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19s-6-3.8-6-8.5A3.5 3.5 0 0 1 11 8a3.5 3.5 0 0 1 6 2.5c0 4.7-6 8.5-6 8.5z"/><path d="M16.5 6.5a2.5 2.5 0 0 1 4.5 1.5c0 3.2-4 5.8-4 5.8"/></svg>`,
                 glasses: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h4l-.5 6a2.5 2.5 0 0 1-5 0L5 3h2z"/><path d="M8 11.5V19M5.5 19h5"/><path d="M15 3h4l-.5 6a2.5 2.5 0 0 1-5 0L13 3h2z"/><path d="M16 11.5V19M13.5 19h5"/></svg>`,
                 dance: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="5" r="2"/><circle cx="15" cy="6" r="2"/><path d="M6 21l2-7 3 2v5"/><path d="M18 21l-2-6-3 1"/><path d="M8 10l4 1 3-2"/></svg>`,
-                dinner: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/><path d="M6 15a6 6 0 0 1 12 0"/><path d="M12 7v2M10 7h4"/></svg>`,
+                bouquet: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="2.2"/><circle cx="15" cy="7" r="2.2"/><circle cx="12" cy="5" r="2.2"/><circle cx="12" cy="9" r="2"/><path d="M9.5 11.2L7 19.5h10l-2.5-8.3"/><path d="M8.5 14.5h7"/><path d="M6 8c-1.5 1.5-1.5 3.5 0 4.5"/><path d="M18 8c1.5 1.5 1.5 3.5 0 4.5"/></svg>`,
                 music: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>`,
                 moon: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/><path d="M16 5v2M15 6h2"/></svg>`
             };
