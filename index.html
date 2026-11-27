@@ -393,7 +393,7 @@
                 </div>
 
                 <p id="cfg-scripture-quote" class="text-[10px] leading-[1.85] tracking-[0.16em] uppercase text-white/95 font-medium">
-                    "POR NUESTRA PARTE, HEMOS CONOCIDO EL AMOR QUE DIOS NOS TIENE, Y HEMOS CREÍDO EN ÉL. DIOS ES AMOR: EL QUE PERMANECE EN EL AMOR PERMANECE EN DIOS Y DIOS EN ÉL" -JUAN 4:16
+                    "POR NUESTRA PARTE, HEMOS CONOCIDO EL AMOR QUE DIOS NOS TIENE, Y HEMOS CREÍDO EN ÉL. DIOS ES AMOR: EL QUE PERMANECE EN EL AMOR PERMANECE EN DIOS Y DIOS EN ÉL"<br>-JUAN 4:16
                 </p>
             </div>
 
@@ -769,7 +769,7 @@
             invitationMessage: "CON LA BENDICIÓN DE DIOS COMENZAREMOS UNA NUEVA ETAPA JUNTOS. QUEREMOS QUE SEAS PARTE DE ESTE DÍA TAN ESPECIAL.",
 
             // Cita o frase adicional separada por corazón
-            scriptureQuote: "\"POR NUESTRA PARTE, HEMOS CONOCIDO EL AMOR QUE DIOS NOS TIENE, Y HEMOS CREÍDO EN ÉL. DIOS ES AMOR: EL QUE PERMANECE EN EL AMOR PERMANECE EN DIOS Y DIOS EN ÉL\" -JUAN 4:16",
+            scriptureQuote: "\"POR NUESTRA PARTE, HEMOS CONOCIDO EL AMOR QUE DIOS NOS TIENE, Y HEMOS CREÍDO EN ÉL. DIOS ES AMOR: EL QUE PERMANECE EN EL AMOR PERMANECE EN DIOS Y DIOS EN ÉL\"\n-JUAN 4:16",
 
             // Datos del primer lugar (Ceremonia / Evento principal)
             ceremony: {
@@ -834,7 +834,7 @@
             document.getElementById("cfg-secondary-photo").alt = `${INVITATION_CONFIG.partner1Name} y ${INVITATION_CONFIG.partner2Name}`;
 
             document.getElementById("cfg-invitation-message").textContent = INVITATION_CONFIG.invitationMessage;
-            document.getElementById("cfg-scripture-quote").textContent = INVITATION_CONFIG.scriptureQuote;
+            document.getElementById("cfg-scripture-quote").innerHTML = INVITATION_CONFIG.scriptureQuote.replace(/\n/g, "<br>");
 
             document.getElementById("cfg-ceremony-time").textContent = INVITATION_CONFIG.ceremony.time;
             document.getElementById("cfg-ceremony-place").textContent = INVITATION_CONFIG.ceremony.venueAndAddress;
@@ -1053,7 +1053,7 @@
            Cambia STORAGE_KEY y scriptURL si creas otro formulario / hoja nueva.
            ===================================================================== */
         function initRSVPSystem() {
-            const STORAGE_KEY = "boda_ana_julio_rsvps_v1";
+            const STORAGE_KEY = "boda_ana_julio_rsvps_v2";
             const scriptURL = "https://script.google.com/macros/s/AKfycbxkeur2CKFU3qG6e5-ubwvSRcNAyACbkFBchjzfOkwlrCVjvWo39z-YFoWchKL8jCySLg/exec";
 
             const modal = document.getElementById("rsvp-modal");
